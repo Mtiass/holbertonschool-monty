@@ -8,13 +8,14 @@
 void addnode(stack_t **head, int n)
 {
 	stack_t *aux, *newnode = malloc(sizeof(stack_t));
-
-    aux = *head;
+	
 	if (newnode == NULL)
 	{
-		free(newnode);
-		return (NULL); 
-    }
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+
+    aux = *head;
     
     if (aux)
         aux->prev = newnode;

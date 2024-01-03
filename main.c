@@ -1,46 +1,40 @@
 #include "monty.h"
-
-void read_file(char *filename)
+cmddata_t cmddata = {NULL, NULL, NULL, 0};
+/**
+* main - monty code interpreter
+* @argc: number of arguments
+* @argv: monty file location
+* Return: 0 on success
+*/
+int main(int argc, char *argv[])
 {
-    FILE *file;
-    char *line = NULL;
-    size_t len = 0;
-    ssize_t read;
-    unsigned int line_number = 0;
-    stack_t *stack = NULL;
+	char *content;
+	FILE *file;
+	size_t size = 0;
+	ssize_t readline = 1;
+	stack_t *stack = NULL;
+	unsigned int cont = 0;
 
-    file = fopen(filename, "r");
-    if (file == NULL)
-    {
-        fprintf(stderr, "Error: Can't open file %s\n", filename);
-        exit(EXIT_FAILURE);
-    }
-
-    while ((read = getline(&line, &len, file)) != -1)
-    {
-        line_number++;
-        cmddata.content = line;
-        if (execute(line, &stack, line_number, file) == EXIT_FAILURE)
-        {
-            free(line);
-            fclose(file);
-            exit(EXIT_FAILURE);
-        }
-    }
-
-    free(line);
-    fclose(file);
-}
-
-int main(int argc, char **argv)
-{
-    if (argc != 2)
-    {
-        fprintf(stderr, "USAGE: monty file\n");
-        exit(EXIT_FAILURE);
-    }
-
-    read_file(argv[1]);
-
-    return (EXIT_SUCCESS);
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+	file = fopen(argv[1], "r");
+	cmddata.file = file;
+	if (!file)
+	{
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
+	}
+	while ((readline = getline(&content, &size, file)) != -1)
+	{
+	cmddata.content = content;
+	cont++;
+	execute(content, &stack, cont, file);
+	free(content);
+	}
+	free_stack(stack);
+	fclose(file);
+return (0);
 }
