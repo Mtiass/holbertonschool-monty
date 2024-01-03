@@ -8,13 +8,13 @@
  */
 void f_push(stack_t **head, unsigned int cont)
 {
-	int n, i = 0, flag = 0;
+	int n, i, flag = 0;
 
 	if (cmd.arg)
 	{
 		if (cmd.arg[0] == '-')
 			i++;
-		for (; cmd.arg[i] != '\0'; i++)
+		for (i = 0; cmd.arg[i] != '\0'; i++)
 		{
 			if (cmd.arg[i] > 57 || cmd.arg[i] < 48)
 				flag = 1; 
