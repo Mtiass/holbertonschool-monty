@@ -16,7 +16,7 @@ void f_push(stack_t **head, unsigned int cont)
 
         for (i = 0; cmddata.arg[0] != '\0'; i++)
         {
-            if (cmddata.arg[i] > 57 || cmddata.arg[i] < 48)
+            if (cmddata.arg[i] > '9' || cmddata.arg[i] < '0')
             notdigit = 1;
         }
         if (notdigit == 1)
