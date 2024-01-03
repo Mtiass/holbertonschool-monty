@@ -60,9 +60,9 @@ extern cmd_t cmd;
 int main(int argc, char *argv[]);
 void free_stack(stack_t *head);
 void addnode(stack_t **head, int n);
-int execute(char *content, stack_t **stack, unsigned int cont, FILE *file);
+void execute(char *content, stack_t **stack, unsigned int line_number, FILE *file);
 void f_pall(stack_t **head, unsigned int cont);
-void f_push(stack_t **head, unsigned int cont);
+void push(stack_t **stack, int value);
 void addqueue(stack_t **head, int n);
 void f_queue(stack_t **head, unsigned int cont);
 

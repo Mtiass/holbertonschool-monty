@@ -6,39 +6,34 @@
  *
  * Return: nothing
  */
-void f_push(stack_t **head, unsigned int cont)
+void push(stack_t **stack, int value)
 {
-	int n, i, flag = 0;
+    stack_t *new_node = malloc(sizeof(stack_t));
+    if (!new_node)
+    {
+        fprintf(stderr, "Error: malloc failed\n");
+        exit(EXIT_FAILURE);
+    }
 
-	if (cmd.arg)
-	{
-		if (cmd.arg[0] == '-')
-			i++;
-		for (i = 0; cmd.arg[i] != '\0'; i++)
-		{
-			if (cmd.arg[i] > 57 || cmd.arg[i] < 48)
-				flag = 1; 
-        }
-		if (flag == 1)
-		{ 
-            fprintf(stderr, "L%d: usage: push integer\n", cont);
-			fclose(cmd.file);
-			free(cmd.content);
-			free_stack(*head);
-			exit(EXIT_FAILURE); 
-        }
+    new_node->n = value;
+    new_node->prev = NULL;
+    new_node->next = *stack;
+
+    if (*stack)
+        (*stack)->prev = new_node;
+
+    *stack = new_node;
+}
+
+void pall(stack_t **stack, unsigned int line_number)
+{
+    stack_t *current = *stack;
+
+    (void)line_number;
+
+    while (current != NULL)
+    {
+        printf("%d\n", current->n);
+        current = current->next;
     }
-	else
-	{ 
-        fprintf(stderr, "L%d: usage: push integer\n", cont);
-		fclose(cmd.file);
-		free(cmd.content);
-		free_stack(*head);
-		exit(EXIT_FAILURE); 
-    }
-	n = atoi(cmd.arg);
-	if (cmd.changer == 0)
-		addnode(head, n);
-	else
-		addqueue(head, n);
 }
