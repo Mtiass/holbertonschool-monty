@@ -1,3 +1,57 @@
+User
+#include "monty.h"
+/**
+ * f_queue - print first node of queue
+ * @head: first node of queue (unused)
+ * @cont: line counter (unused)
+ *
+ * Return: none
+ */
+void f_queue(stack_t **head, unsigned int cont)
+{
+	(void)head;
+	(void)cont;
+
+	cmd.changer = 1;
+}
+
+/**
+ * addqueue - add node to tail of queue
+ * @n: new value
+ * @head: head of the queue
+ *
+ * Return: none
+ */
+
+void addqueue(stack_t **head, int n)
+{
+	stack_t *new_node, *aux;
+
+	aux = *head;
+	new_node = malloc(sizeof(stack_t));
+
+	if (new_node == NULL)
+		printf("Error\n");
+
+	new_node->n = n;
+	new_node->next = NULL;
+
+	if (aux)
+	{
+		while (aux->next)
+			aux = aux->next;
+	}
+	if (!aux)
+	{
+		*head = new_node;
+		new_node->prev = NULL;
+	}
+	else
+	{
+		aux->next = new_node;
+		new_node->prev = aux;
+	}
+}
 #ifndef MONTY_H
 #define MONTY_H
 
@@ -60,10 +114,9 @@ extern cmd_t cmd;
 int main(int argc, char *argv[]);
 void free_stack(stack_t *head);
 void addnode(stack_t **head, int n);
-void execute(char *content, stack_t **stack, unsigned int line_number, FILE *file);
+int execute(char *content, stack_t **stack, unsigned int cont, FILE *file);
 void f_pall(stack_t **head, unsigned int cont);
 void f_push(stack_t **head, unsigned int cont);
-int is_valid_number(const char *str);
 void addqueue(stack_t **head, int n);
 void f_queue(stack_t **head, unsigned int cont);
 
