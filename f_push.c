@@ -1,45 +1,33 @@
 #include "monty.h"
-/**
- * f_push - add node to the stack
- * @head: array of structures
- * @cont: current line counter
- * Return: no return
- */
-void f_push(stack_t **head, unsigned int cont)
+
+void f_push(stack_t **stack, unsigned int line_number)
 {
-    int n, i, notdigit = 0;
-    
-    if (cmddata.arg)
-    {
-        if (cmddata.arg[0] == '-')
-            i++;
+    int i;
+    char *arg = strtok(NULL, " \n\t");
 
-        for (i = 0; cmddata.arg[0] != '\0'; i++)
-        {
-            if (cmddata.arg[i] > '9' || cmddata.arg[i] < '0')
-            notdigit = 1;
-        }
-        if (notdigit == 1)
-        {
-            fprintf(stderr, "L%d: usage: push integer\n", cont);
-			fclose(cmddata.file);
-			free(cmddata.content);
-			free_stack(*head);
-			exit(EXIT_FAILURE);
-        }
-    }
-    else
+    if (arg == NULL || check_if_number(arg) == 0)
     {
-        fprintf(stderr, "L%d: usage: push integer\n", counter);
-		fclose(cmddata.file);
-		free(cmddata.content);
-		free_stack(*head);
-		exit(EXIT_FAILURE);
+        fprintf(stderr, "L%d: usage: push integer\n", line_number);
+        exit(EXIT_FAILURE);
     }
-    n = atoi(cmddata.arg);
 
-    if (cmddata.stackqueue_flag = 0)
-        addnode(head,n);
-    else
-        addqueue(head,n);
+    int n = atoi(arg);
+    stack_t *new_node = malloc(sizeof(stack_t));
+
+    if (new_node == NULL)
+    {
+        fprintf(stderr, "Error: malloc failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    new_node->n = n;
+    new_node->prev = NULL;
+    new_node->next = *stack;
+
+    if (*stack != NULL)
+    {
+        (*stack)->prev = new_node;
+    }
+
+    *stack = new_node;
 }

@@ -1,26 +1,18 @@
 #include "monty.h"
-/**
-* execute - executes the opcode
-* @stack: head linked list - stack
-* @cont: line_counter
-* @file: pointer to monty file
-* @content: line content
-* Return: no return
-*/
+
+instruction_t opst[] = 
+{
+	{"push", f_push},
+	{"pall", f_pall},
+	{NULL, NULL}
+};
+
 int execute(char *content, stack_t **stack, unsigned int cont, FILE *file)
 {
     char *op;
     unsigned int i;
     
-	instruction_t opst[] = 
-    {
-				{"push", f_push},
-                {"pall", f_pall},
-				{NULL, NULL}
-    };
-
-	i = 0;
-    op = strtok(content, " \n\t");
+	op = strtok(content, " \n\t");
 	cmddata.arg = strtok(NULL, " \n\t");
 	while (opst[i].opcode && op)
 	{

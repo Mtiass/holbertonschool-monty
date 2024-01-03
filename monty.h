@@ -54,12 +54,15 @@ typedef struct cmddata_s
 }  cmddata_t;
 extern cmddata_t cmddata;
 
-void f_pall(stack_t **head);
-void addnode(stack_t **head, int n);
-void addqueue(stack_t **head, int n);
-void f_push(stack_t **head, unsigned int cont);
-int main(int argc, char *argv[]);
+void f_push(stack_t **stack, unsigned int line_number);
 int execute(char *content, stack_t **stack, unsigned int cont, FILE *file);
+void addnode(stack_t **head, int n);
+void f_pall(stack_t **stack, unsigned int line_number);
+void f_queue(stack_t **head, unsigned int cont);
 void free_stack(stack_t *head);
+int main(int argc, char *argv[]);
+int check_if_number(char *str);
+
+
 
 #endif
