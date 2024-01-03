@@ -60,5 +60,6 @@ void addqueue(stack_t **head, int n);
 void f_push(stack_t **head, unsigned int cont);
 int main(int argc, char *argv[]);
 int execute(char *content, stack_t **stack, unsigned int cont, FILE *file);
+void free_stack(stack_t *head);
 
 #endif
