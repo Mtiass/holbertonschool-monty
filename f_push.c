@@ -1,38 +1,45 @@
 #include "monty.h"
 /**
- * f_push - function that adds node to the stack
- * @head: double head pointer to the stack
- * @counter: line count
- *
- * Return: nothing
+ * f_push - add node to the stack
+ * @head: array of structures
+ * @cont: current line counter
+ * Return: no return
  */
 void f_push(stack_t **head, unsigned int cont)
 {
-	int n, i  = 0, flag = 0;
+    int n, i, notdigit = 0;
+    
+    if (cmddata.arg)
+    {
+        if (cmddata.arg[0] == '-')
+            i++;
 
-	if (cmddata.arg)
-	{
-		if (cmddata.arg[0] == '-')
-			i++;
-		for (; cmddata.arg[i] != '\0'; i++)
-		{
-			if (cmddata.arg[i] > 57 || cmddata.arg[i] < 48)
-				flag = 1; }
-		if (flag == 1)
-		{ fprintf(stderr, "L%d: usage: push integer\n", cont);
+        for (i = 0; cmddata.arg[0] != '\0'; i++)
+        {
+            if (cmddata.arg[i] > '9' || cmddata.arg[i] < '0')
+            notdigit = 1;
+        }
+        if (notdigit == 1)
+        {
+            fprintf(stderr, "L%d: usage: push integer\n", cont);
 			fclose(cmddata.file);
 			free(cmddata.content);
 			free_stack(*head);
-			exit(EXIT_FAILURE); }}
-	else
-	{ fprintf(stderr, "L%d: usage: push integer\n", cont);
+			exit(EXIT_FAILURE);
+        }
+    }
+    else
+    {
+        fprintf(stderr, "L%d: usage: push integer\n", counter);
 		fclose(cmddata.file);
 		free(cmddata.content);
 		free_stack(*head);
-		exit(EXIT_FAILURE); }
-	n = atoi(cmddata.arg);
-	if (cmddata.lifi == 0)
-		addnode(head, n);
-	else
-		addqueue(head, n);
+		exit(EXIT_FAILURE);
+    }
+    n = atoi(cmddata.arg);
+
+    if (cmddata.stackqueue_flag = 0)
+        addnode(head,n);
+    else
+        addqueue(head,n);
 }

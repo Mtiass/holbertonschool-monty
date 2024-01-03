@@ -1,42 +1,43 @@
 #include "monty.h"
-
 /**
-* execute - execute opcode
-* @stack: stack of linked list
-* @counter: line counter
-* @file: pointer to monty file stream
+* execute - executes the opcode
+* @stack: head linked list - stack
+* @cont: line_counter
+* @file: pointer to monty file
 * @content: line content
-*
-* Return: none
+* Return: no return
 */
-int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
+int execute(char *content, stack_t **stack, unsigned int cont, FILE *file)
 {
+    char *op;
+    unsigned int i;
+    
 	instruction_t opst[] = 
-				{
-				{"push", f_push}, 
-				{"pall", f_pall},
+    {
+				{"push", f_push},
+                {"pall", f_pall},
 				{NULL, NULL}
-				};
-	unsigned int i = 0;
-	char *op;
+    };
 
-	op = strtok(content, " \n\t");
-	if (op && op[0] == '#')
-		return (0);
-	bus.arg = strtok(NULL, " \n\t");
+	i = 0;
+    op = strtok(content, " \n\t");
+	cmddata.arg = strtok(NULL, " \n\t");
 	while (opst[i].opcode && op)
 	{
 		if (strcmp(op, opst[i].opcode) == 0)
-		{	opst[i].f(stack, counter);
+		{	
+            opst[i].f(stack, cont);
 			return (0);
 		}
 		i++;
 	}
 	if (op && opst[i].opcode == NULL)
-	{ fprintf(stderr, "L%d: unknown instruction %s\n", counter, op);
+	{ 
+        fprintf(stderr, "L%d: unknown instruction %s\n", cont, op);
 		fclose(file);
 		free(content);
 		free_stack(*stack);
-		exit(EXIT_FAILURE); }
+		exit(EXIT_FAILURE); 
+    }
 	return (1);
 }
