@@ -1,12 +1,11 @@
 #include "monty.h"
+cmddata_t cmddata = {NULL, NULL, NULL, 0};
 /**
 * main - monty code interpreter
 * @argc: number of arguments
 * @argv: monty file location
 * Return: 0 on success
 */
-cmddata_t cmddata = {NULL, NULL, NULL, 0};
-
 int main(int argc, char *argv[])
 {
 	char *content;
