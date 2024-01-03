@@ -1,3 +1,4 @@
+#include "monty.h"
 /**
 * f_pall - print everything in stack
 * @head: pointer to pointer of first node
