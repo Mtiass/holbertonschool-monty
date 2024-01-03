@@ -62,7 +62,8 @@ void free_stack(stack_t *head);
 void addnode(stack_t **head, int n);
 void execute(char *content, stack_t **stack, unsigned int line_number, FILE *file);
 void f_pall(stack_t **head, unsigned int cont);
-void push(stack_t **stack, int value);
+void f_push(stack_t **head, unsigned int cont);
+int is_valid_number(const char *str);
 void addqueue(stack_t **head, int n);
 void f_queue(stack_t **head, unsigned int cont);
 

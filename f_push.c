@@ -1,39 +1,39 @@
 #include "monty.h"
-/**
- * f_push - function that adds node to the stack
- * @head: double head pointer to the stack
- * @cont: line counter
- *
- * Return: nothing
- */
-void push(stack_t **stack, int value)
+int is_valid_number(const char *str)
 {
-    stack_t *new_node = malloc(sizeof(stack_t));
-    if (!new_node)
+    int i = 0;
+
+    if (str == NULL || str[0] == '\0')
+        return 0;
+
+    if (str[0] == '-')
+        i++;
+
+    for (; str[i] != '\0'; i++)
     {
-        fprintf(stderr, "Error: malloc failed\n");
+        if (!isdigit(str[i]))
+            return 0;
+    }
+
+    return 1;
+}
+
+void f_push(stack_t **head, unsigned int cont)
+{
+    int n;
+
+    if (!cmd.arg || !is_valid_number(cmd.arg))
+    {
+        fprintf(stderr, "L%d: usage: push integer\n", cont);
+        fclose(cmd.file);
+        free(cmd.content);
+        free_stack(*head);
         exit(EXIT_FAILURE);
     }
 
-    new_node->n = value;
-    new_node->prev = NULL;
-    new_node->next = *stack;
-
-    if (*stack)
-        (*stack)->prev = new_node;
-
-    *stack = new_node;
-}
-
-void pall(stack_t **stack, unsigned int line_number)
-{
-    stack_t *current = *stack;
-
-    (void)line_number;
-
-    while (current != NULL)
-    {
-        printf("%d\n", current->n);
-        current = current->next;
-    }
+    n = atoi(cmd.arg);
+    if (cmd.changer == 0)
+        addnode(head, n);
+    else
+        addqueue(head, n);
 }
