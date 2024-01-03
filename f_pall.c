@@ -1,32 +1,23 @@
 #include "monty.h"
-
-void f_pall(stack_t **stack, unsigned int line_number)
+/**
+* f_pall - print everything in stack
+* @head: pointer to pointer of first node
+* @cont: line counter (not used)
+*
+* Return: none
+*/
+void f_pall(stack_t **head, unsigned int cont)
 {
-    stack_t *current = *stack;
+	stack_t *h;
+	(void)cont;
 
-    while (current != NULL)
-    {
-        printf("%d\n", current->n);
-        current = current->next;
-    }
-}
+	h = *head;
+	if (h == NULL)
+		return;
 
-int check_if_number(char *str)
-{
-    int i = 0;
-
-    if (str[i] == '-')
-    {
-        i++;
-    }
-
-    for (; str[i]; i++)
-    {
-        if (isdigit(str[i]) == 0)
-        {
-            return (0);
-        }
-    }
-
-    return (1);
+	while (h)
+	{
+		printf("%d\n", h->n);
+		h = h->next;
+	}
 }

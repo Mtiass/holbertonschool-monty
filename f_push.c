@@ -1,33 +1,38 @@
 #include "monty.h"
-
-void f_push(stack_t **stack, unsigned int line_number)
+/**
+ * f_push - function that adds node to the stack
+ * @head: double head pointer to the stack
+ * @counter: line count
+ *
+ * Return: nothing
+ */
+void f_push(stack_t **head, unsigned int cont)
 {
-    int i;
-    char *arg = strtok(NULL, " \n\t");
+	int n, i  = 0, flag = 0;
 
-    if (arg == NULL || check_if_number(arg) == 0)
-    {
-        fprintf(stderr, "L%d: usage: push integer\n", line_number);
-        exit(EXIT_FAILURE);
-    }
-
-    int n = atoi(arg);
-    stack_t *new_node = malloc(sizeof(stack_t));
-
-    if (new_node == NULL)
-    {
-        fprintf(stderr, "Error: malloc failed\n");
-        exit(EXIT_FAILURE);
-    }
-
-    new_node->n = n;
-    new_node->prev = NULL;
-    new_node->next = *stack;
-
-    if (*stack != NULL)
-    {
-        (*stack)->prev = new_node;
-    }
-
-    *stack = new_node;
+	if (cmddata.arg)
+	{
+		if (cmddata.arg[0] == '-')
+			i++;
+		for (; cmddata.arg[i] != '\0'; i++)
+		{
+			if (cmddata.arg[i] > 57 || cmddata.arg[i] < 48)
+				flag = 1; }
+		if (flag == 1)
+		{ fprintf(stderr, "L%d: usage: push integer\n", cont);
+			fclose(cmddata.file);
+			free(cmddata.content);
+			free_stack(*head);
+			exit(EXIT_FAILURE); }}
+	else
+	{ fprintf(stderr, "L%d: usage: push integer\n", cont);
+		fclose(cmddata.file);
+		free(cmddata.content);
+		free_stack(*head);
+		exit(EXIT_FAILURE); }
+	n = atoi(cmddata.arg);
+	if (cmddata.lifi == 0)
+		addnode(head, n);
+	else
+		addqueue(head, n);
 }

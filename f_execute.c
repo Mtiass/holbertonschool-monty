@@ -1,35 +1,42 @@
 #include "monty.h"
 
-instruction_t opst[] = 
+/**
+* execute - execute opcode
+* @stack: stack of linked list
+* @counter: line counter
+* @file: pointer to monty file stream
+* @content: line content
+*
+* Return: none
+*/
+int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
-	{"push", f_push},
-	{"pall", f_pall},
-	{NULL, NULL}
-};
+	instruction_t opst[] = 
+				{
+				{"push", f_push}, 
+				{"pall", f_pall},
+				{NULL, NULL}
+				};
+	unsigned int i = 0;
+	char *op;
 
-int execute(char *content, stack_t **stack, unsigned int cont, FILE *file)
-{
-    char *op;
-    unsigned int i;
-    
 	op = strtok(content, " \n\t");
-	cmddata.arg = strtok(NULL, " \n\t");
+	if (op && op[0] == '#')
+		return (0);
+	bus.arg = strtok(NULL, " \n\t");
 	while (opst[i].opcode && op)
 	{
 		if (strcmp(op, opst[i].opcode) == 0)
-		{	
-            opst[i].f(stack, cont);
+		{	opst[i].f(stack, counter);
 			return (0);
 		}
 		i++;
 	}
 	if (op && opst[i].opcode == NULL)
-	{ 
-        fprintf(stderr, "L%d: unknown instruction %s\n", cont, op);
+	{ fprintf(stderr, "L%d: unknown instruction %s\n", counter, op);
 		fclose(file);
 		free(content);
 		free_stack(*stack);
-		exit(EXIT_FAILURE); 
-    }
+		exit(EXIT_FAILURE); }
 	return (1);
 }
