@@ -4,7 +4,7 @@
  * @head: array of structures
  * @cont: current line counter
  * Return: no return
-*/
+ */
 void f_push(stack_t **head, unsigned int cont)
 {
     int n, i, notdigit = 0;

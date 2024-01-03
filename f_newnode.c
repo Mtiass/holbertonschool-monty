@@ -4,7 +4,7 @@
  * @head: head of the stack
  * @i: new_value
  * Return: no return
-*/
+ */
 void addnode(stack_t **head, int n)
 {
 	stack_t *aux, *newnode = malloc(sizeof(stack_t));
