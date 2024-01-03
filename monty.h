@@ -56,5 +56,8 @@ extern cmddata_t cmddata;
 
 void f_pall(stack_t **head);
 void addnode(stack_t **head, int n);
+void addqueue(stack_t **head, int n);
+void f_push(stack_t **head, unsigned int cont);
+int main(int argc, char *argv[]);
 
 #endif
