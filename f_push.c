@@ -12,11 +12,11 @@ void f_push(stack_t **head, unsigned int cont)
     if (cmddata.arg)
     {
         if (cmddata.arg[0] == '-')
-            j++;
+            i++;
 
         for (i = 0; cmddata.arg[0] != '\0'; i++)
         {
-            if (cmddata.arg[i] > '9' || cmddata.arg[i] < '0')
+            if (cmddata.arg[i] > 57 || cmddata.arg[i] < 48)
             notdigit = 1;
         }
         if (notdigit == 1)
