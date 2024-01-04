@@ -18,24 +18,24 @@ void f_push(stack_t **head, unsigned int cont)
 		for (; cmd.arg[i] != '\0'; i++)
 		{
 			if (cmd.arg[i] > 57 || cmd.arg[i] < 48)
-				notnum = 1; 
+				notnum = 1;
 			}
 		if (notnum == 1)
-		{ 
+		{
 			fprintf(stderr, "L%d: usage: push integer\n", cont);
 			fclose(cmd.file);
 			free(cmd.content);
 			free_stack(*head);
-			exit(EXIT_FAILURE); 
+			exit(EXIT_FAILURE);
 			}
 		}
 	else
-	{ 
+	{
 		fprintf(stderr, "L%d: usage: push integer\n", cont);
 		fclose(cmd.file);
 		free(cmd.content);
 		free_stack(*head);
-		exit(EXIT_FAILURE); 
+		exit(EXIT_FAILURE);
 		}
 	n = atoi(cmd.arg);
 	if (cmd.changer == 0)
