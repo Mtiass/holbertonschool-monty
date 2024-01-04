@@ -50,11 +50,10 @@ typedef struct instruction_s
  */
 typedef struct cmd_s
 {
-	char *arg = NULL;
-	FILE *file = NULL;
-	char *content = NULL;
-	int changer = 0;
-
+	char *arg;
+	FILE *file;
+	char *content;
+	int changer;
 }  cmd_t;
 extern cmd_t cmd;
 
