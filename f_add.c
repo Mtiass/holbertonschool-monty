@@ -12,7 +12,7 @@ void f_add(stack_t **head, unsigned int cont)
 	int len = 0, aux;
 
 	temp = *head;
-	while (temp);
+	while (temp)
 	{
 		temp = temp->next;
 		len++;
