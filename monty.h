@@ -50,10 +50,11 @@ typedef struct instruction_s
  */
 typedef struct cmd_s
 {
-	char *arg;
-	FILE *file;
-	char *content;
-	int changer;
+	char *arg = NULL;
+	FILE *file = NULL;
+	char *content = NULL;
+	int changer = 0;
+
 }  cmd_t;
 extern cmd_t cmd;
 
@@ -70,5 +71,5 @@ void f_pop(stack_t **head, unsigned int cont);
 void f_nop(stack_t **head, unsigned int cont);
 void f_swap(stack_t **head, unsigned int cont);
 void f_add(stack_t **head, unsigned int cont);
-cmd_t cmd = {NULL, NULL, NULL, 0};
+
 #endif
