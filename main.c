@@ -1,5 +1,6 @@
 #include "monty.h"
-cmd_t cmd;
+
+cmd_t cmd = {NULL, NULL, NULL, 0};
 
 /**
 * main - monty code interpreter
@@ -10,9 +11,6 @@ cmd_t cmd;
 */
 int main(int argc, char *argv[])
 {
-	cmd.arg = NULL;
-	cmd.content = NULL;
-	cmd.changer = 0;
 	char *content;
 	FILE *file;
 	size_t size = 0;
