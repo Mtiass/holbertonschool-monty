@@ -64,7 +64,7 @@ int execute(char *content, stack_t **stack, unsigned int cont, FILE *file, cmd_t
 void f_pall(stack_t **head, unsigned int cont, cmd_t *cmd);
 void f_push(stack_t **head, unsigned int cont, cmd_t *cmd);
 void addqueue(stack_t **head, int n, cmd_t *cmd);
-void f_queue(stack_t **head, unsigned int cont);
+void f_queue(stack_t **head, unsigned int cont, cmd_t *cmd);
 void f_pint(stack_t **head, unsigned int cont, cmd_t *cmd);
 void f_pop(stack_t **head, unsigned int cont, cmd_t *cmd);
 void f_nop(stack_t **head, unsigned int cont, cmd_t *cmd);

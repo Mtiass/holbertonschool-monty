@@ -6,7 +6,7 @@
 *
 * Return: none
 */
-void f_pall(stack_t **head, unsigned int cont, cmd_t *cmd)
+void f_pall(stack_t **head, unsigned int cont)
 {
 	stack_t *h;
 	(void)cont;

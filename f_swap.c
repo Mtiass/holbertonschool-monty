@@ -5,7 +5,7 @@
  * @cont: line_number
  * Return: no return
 */
-void f_swap(stack_t **head, unsigned int cont, cmd_t *cmd)
+void f_swap(stack_t **head, unsigned int cont)
 {
 	stack_t *temp;
 
