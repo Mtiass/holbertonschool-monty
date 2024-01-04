@@ -1,4 +1,7 @@
 #include "monty.h"
+
+cmd_t cmd = {NULL, NULL, NULL, 0};
+
 /**
 * main - monty code interpreter
 * @argc: argument counter
@@ -8,7 +11,6 @@
 */
 int main(int argc, char *argv[])
 {
-	cmd = {NULL, NULL, NULL, 0};
 	char *content;
 	FILE *file;
 	size_t size = 0;
