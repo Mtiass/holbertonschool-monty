@@ -70,5 +70,5 @@ void f_pop(stack_t **head, unsigned int cont);
 void f_nop(stack_t **head, unsigned int cont);
 void f_swap(stack_t **head, unsigned int cont);
 void f_add(stack_t **head, unsigned int cont);
-
+cmd_t cmd = {NULL, NULL, NULL, 0};
 #endif
