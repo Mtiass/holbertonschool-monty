@@ -8,6 +8,7 @@
 */
 int main(int argc, char *argv[])
 {
+	(void)cmd = {NULL, NULL, NULL, 0};
 	char *content;
 	FILE *file;
 	size_t size = 0;
