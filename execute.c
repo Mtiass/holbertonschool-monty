@@ -9,7 +9,7 @@
 *
 * Return: none
 */
-int execute(char *content, stack_t **stack, unsigned int cont, FILE *file)
+int execute(char *content, stack_t **stack, unsigned int cont, FILE *file, cmd_t *cmd)
 {
 	instruction_t opst[] = {
 				{"push", f_push},

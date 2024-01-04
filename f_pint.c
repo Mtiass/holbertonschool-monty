@@ -5,7 +5,7 @@
  * @cont: line_number
  * Return: no return
 */
-void f_pint(stack_t **head, unsigned int cont)
+void f_pint(stack_t **head, unsigned int cont, cmd_t *cmd)
 {
 	if (*head == NULL)
 	{

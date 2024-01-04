@@ -6,7 +6,7 @@
  *
  * Return: nothing
  */
-void f_push(stack_t **head, unsigned int cont)
+void f_push(stack_t **head, unsigned int cont, cmd_t *cmd)
 {
 	int n, i, notnum = 0;
 

@@ -6,7 +6,7 @@
  *
  * Return: none
  */
-void f_queue(stack_t **head, unsigned int cont)
+void f_queue(stack_t **head, unsigned int cont, cmd_t *cmd)
 {
 	(void)head;
 	(void)cont;
