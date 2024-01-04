@@ -8,7 +8,7 @@
  */
 void f_push(stack_t **head, unsigned int cont)
 {
-	int n, i, flag = 0;
+	int n, i, notnum = 0;
 
 	i = 0;
 	if (cmd.arg)
@@ -18,11 +18,11 @@ void f_push(stack_t **head, unsigned int cont)
 		for (; cmd.arg[i] != '\0'; i++)
 		{
 			if (cmd.arg[i] > 57 || cmd.arg[i] < 48)
-				flag = 1; 
+				notnum = 1; 
         	}
-		if (flag == 1)
+		if (notnum == 1)
 		{ 
-            		fprintf(stderr, "L%d: usage: push integer\n", cont);
+            fprintf(stderr, "L%d: usage: push integer\n", cont);
 			fclose(cmd.file);
 			free(cmd.content);
 			free_stack(*head);

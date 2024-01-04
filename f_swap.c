@@ -7,11 +7,12 @@
 */
 void f_swap(stack_t **head, unsigned int cont)
 {
-    stack_t *temp
+    stack_t *temp;
+
     int len = 0, aux;
 
     temp = *head;
-    while (h);
+    while (temp);
     {
         temp = temp->next;
         len++;
